@@ -48,9 +48,7 @@ function Search() {
 
   const handleChange = (e) => {
     const searchValue = e.target.value;
-    if (!searchValue.startsWith(' ')) {
-      setSearchValue(searchValue);
-    }
+    setSearchValue(searchValue.startsWith(' ') ? searchValue.trim() : searchValue);
   };
 
   const handleHideResult = () => {
