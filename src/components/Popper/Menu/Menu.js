@@ -32,6 +32,13 @@ function Menu({ items = [], children, hideOnClick = false, onChange = defaultFn 
       );
     });
   };
+
+  const handleReset = () => {
+    setHistory((prev) => prev.slice(0, 1));
+  };
+  const handleResetToFirstPage = () => {
+    setHistory((prev) => prev.slice(0, prev.length - 1));
+  };
   return (
     <Tippy
       visible={true}
@@ -44,19 +51,13 @@ function Menu({ items = [], children, hideOnClick = false, onChange = defaultFn 
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
           <PopperWrapper className={cx('menu-popper')}>
             {history.length > 1 && (
-              <Header
-                title={current.title}
-                className={cx('menu-header')}
-                onBack={() => {
-                  setHistory((prev) => prev.slice(0, prev.length - 1));
-                }}
-              />
+              <Header title={current.title} className={cx('menu-header')} onBack={() => handleResetToFirstPage} />
             )}
             <div className={cx('menu-body')}> {renderItems()}</div>
           </PopperWrapper>
         </div>
       )}
-      onHide={() => setHistory((prev) => prev.slice(0, 1))}
+      onHide={() => handleReset}
     >
       {children}
     </Tippy>

@@ -1,8 +1,5 @@
 import classNames from 'classnames/bind';
-import Tippy from '@tippyjs/react/headless';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Menu.module.scss';
-import MenuItem from './MenuItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
